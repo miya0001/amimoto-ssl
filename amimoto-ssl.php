@@ -39,8 +39,7 @@ public  function ssl_fix($uri)
     if (is_admin()) {
         return $uri;
     } else {
-        $ssl_url = preg_replace("#^http(s)?\:#", "", WP_HOME);
-        return str_replace(WP_HOME, $ssl_url, "", WP_HOME), $uri);
+        return str_replace('http://'.$_SERVER['HTTP_HOST'], '//'.$_SERVER['HTTP_HOST'], $uri);
     }
 }
 
